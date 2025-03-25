@@ -5,13 +5,26 @@ import { ImageBackground } from 'react-native';
 import backgroundImage from "./assets/background.png";
 import Home from './pages/Home/Home';
 import { requestForegroundPermissionsAsync, getCurrentPositionAsync } from 'expo-location';
+import { MeteoAPI } from './api/meteo';
 
 const App = () => {
   const [coordinates, setCoordinates] = useState();
+  const [weather, setWeather] = useState();
 
   useEffect(() => {
     getUserCoordinates();
   }, []);
+
+  useEffect(() => {
+    if (coordinates) {
+      fetchWeatherByCoords(coordinates);
+    }
+  }, [coordinates]);
+
+  async function fetchWeatherByCoords(coords) {
+    const weatherResponse = await MeteoAPI.fetchWeatherByCoords(coords)
+    setWeather(weatherResponse);
+  }
 
   async function getUserCoordinates() {
     const { status } = await requestForegroundPermissionsAsync();
