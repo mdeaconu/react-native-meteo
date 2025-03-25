@@ -47,7 +47,7 @@ const App = () => {
     <ImageBackground imageStyle={s.image} style={s.imageBackground} source={backgroundImage}>
       <SafeAreaProvider>
         <SafeAreaView style={s.container}>
-          {isFontLoaded && <Home />}
+          {isFontLoaded && weather && <Home weather={weather} />}
         </SafeAreaView>
       </SafeAreaProvider>
     </ImageBackground>
