@@ -2,7 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import { s } from "./Home.style";
 import Txt from "../../components/Txt/Txt";
-import MeteoBasic from "../MeteoBasic/MeteoBasic";
+import MeteoBasic from "../../components/MeteoBasic/MeteoBasic";
 import { getWeatherInterpretation } from "../../utils/meteo_utils";
 
 const Home = ({ weather }) => {

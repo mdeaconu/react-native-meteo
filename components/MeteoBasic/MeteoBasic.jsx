@@ -1,13 +1,14 @@
 import React from "react";
 import { Image, View } from "react-native";
 import { s } from "./MeteoBasic.style";
-import Txt from "../../components/Txt/Txt";
+import Txt from "../Txt/Txt";
+import Clock from "../Clock/Clock";
 
 const MeteoBasic = ({ interpretation, temperature }) => {
   return (
     <>
       <View style={s.clock}>
-        <Txt>Clock</Txt>
+        <Clock />
       </View>
       <View style={s.city}>
         <Txt>City</Txt>
