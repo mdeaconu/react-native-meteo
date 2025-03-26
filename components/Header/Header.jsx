@@ -20,4 +20,4 @@ const Header = ({ city }) => {
   );
 };
 
-export { Header };
+export default Header;
