@@ -7,6 +7,7 @@ import { useNavigation } from "@react-navigation/native";
 
 const MeteoBasic = ({ city, dailyWeather, interpretation, temperature }) => {
   const navigation = useNavigation();
+
   return (
     <>
       <View style={s.clock}>
