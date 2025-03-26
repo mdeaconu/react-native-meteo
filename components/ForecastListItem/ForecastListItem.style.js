@@ -13,9 +13,13 @@ export const s = StyleSheet.create({
   },
   date: {
     fontSize: 20,
+    textAlign: "center",
+    minWidth: 70
   },
   day: {
     fontSize: 20,
+    textAlign: "center",
+    minWidth: 70
   },
   temperature: {
     minWidth: 50,

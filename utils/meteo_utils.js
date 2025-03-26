@@ -26,8 +26,15 @@ export const WEATHER_INTERPRATIONS = [
   },
 ];
 
+export const DAYS = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+
 export function getWeatherInterpretation(code) {
   return WEATHER_INTERPRATIONS.find(
     (interpretation) => interpretation.codes.includes(code)
   );
+}
+
+export function getDayInfo(time) {
+  const date = new Date(time);
+  return [DAYS[date.getDay()], date.toLocaleDateString("default", { day: "numeric", month: "numeric" })];
 }

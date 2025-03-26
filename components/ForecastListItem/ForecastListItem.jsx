@@ -1,7 +1,7 @@
 import React from "react";
-import { s } from "./ForecastListItem.style";
 import { Image, View } from "react-native";
 import Txt from "../Txt/Txt";
+import { s } from "./ForecastListItem.style";
 
 const ForecastListItem = ({ date, day, image, temperature }) => {
   return (
