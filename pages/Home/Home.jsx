@@ -4,10 +4,13 @@ import { s } from "./Home.style";
 import Txt from "../../components/Txt/Txt";
 import MeteoBasic from "../../components/MeteoBasic/MeteoBasic";
 import { getWeatherInterpretation } from "../../utils/meteo_utils";
+import MeteoAdvanced from "../../components/MeteoAdvanced/MeteoAdvanced";
 
 const Home = ({ city, weather }) => {
   const currentWeather = weather.current_weather;
   const currentInterpretation = getWeatherInterpretation(currentWeather.weathercode);
+  const sunrise = weather.daily.sunrise[0].split("T")[1].padStart(2, "0");
+  const sunset = weather.daily.sunset[0].split("T")[1].padStart(2, "0");
 
   return (
     <>
@@ -22,7 +25,11 @@ const Home = ({ city, weather }) => {
         <Txt style={{ fontSize: 30 }}>Search Bar</Txt>
       </View>
       <View style={s.meteo_advanced}>
-        <Txt style={{ fontSize: 30 }}>Advanced Weather Info</Txt>
+        <MeteoAdvanced
+          sunrise={sunrise}
+          sunset={sunset}
+          windspeed={currentWeather.windspeed}
+        />
       </View>
     </>
   );
