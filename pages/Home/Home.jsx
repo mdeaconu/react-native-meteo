@@ -16,6 +16,7 @@ const Home = ({ city, weather }) => {
     <>
       <View style={s.meteo_basic}>
         <MeteoBasic
+          dailyWeather={weather.daily}
           city={city}
           interpretation={currentInterpretation}
           temperature={Math.round(currentWeather.temperature)}

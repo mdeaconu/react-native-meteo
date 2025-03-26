@@ -1,10 +1,12 @@
 import React from "react";
-import { Image, View } from "react-native";
+import { Image, TouchableOpacity, View } from "react-native";
 import { s } from "./MeteoBasic.style";
 import Txt from "../Txt/Txt";
 import Clock from "../Clock/Clock";
+import { useNavigation } from "@react-navigation/native";
 
-const MeteoBasic = ({ city, interpretation, temperature }) => {
+const MeteoBasic = ({ city, dailyWeather, interpretation, temperature }) => {
+  const navigation = useNavigation();
   return (
     <>
       <View style={s.clock}>
@@ -17,7 +19,11 @@ const MeteoBasic = ({ city, interpretation, temperature }) => {
         <Txt style={s.interpretation_txt}>{interpretation.label}</Txt>
       </View>
       <View style={s.temperature_box}>
-        <Txt style={s.temperature}>{temperature}º</Txt>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Forecasts", { city, ...dailyWeather })}
+        >
+          <Txt style={s.temperature}>{temperature}º</Txt>
+        </TouchableOpacity>
         <Image style={s.image} source={interpretation.image} />
       </View>
     </>
