@@ -4,14 +4,14 @@ import { s } from "./MeteoBasic.style";
 import Txt from "../Txt/Txt";
 import Clock from "../Clock/Clock";
 
-const MeteoBasic = ({ interpretation, temperature }) => {
+const MeteoBasic = ({ city, interpretation, temperature }) => {
   return (
     <>
       <View style={s.clock}>
         <Clock />
       </View>
       <View style={s.city}>
-        <Txt>City</Txt>
+        <Txt>{city}</Txt>
       </View>
       <View style={s.interpretation}>
         <Txt style={s.interpretation_txt}>{interpretation.label}</Txt>

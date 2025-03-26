@@ -5,7 +5,7 @@ import Txt from "../../components/Txt/Txt";
 import MeteoBasic from "../../components/MeteoBasic/MeteoBasic";
 import { getWeatherInterpretation } from "../../utils/meteo_utils";
 
-const Home = ({ weather }) => {
+const Home = ({ city, weather }) => {
   const currentWeather = weather.current_weather;
   const currentInterpretation = getWeatherInterpretation(currentWeather.weathercode);
 
@@ -13,6 +13,7 @@ const Home = ({ weather }) => {
     <>
       <View style={s.meteo_basic}>
         <MeteoBasic
+          city={city}
           interpretation={currentInterpretation}
           temperature={Math.round(currentWeather.temperature)}
         />
