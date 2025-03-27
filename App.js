@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { s } from './App.style';
-import { ImageBackground } from 'react-native';
+import { Alert, ImageBackground } from 'react-native';
 import backgroundImage from "./assets/background.png";
 import Home from './pages/Home/Home';
 import Forecasts from './pages/Forecasts/Forecasts';
@@ -48,6 +48,18 @@ const App = () => {
     setCity(cityResponse);
   }
 
+  async function fetchCoordsByCity(city) {
+    try {
+      const coordsResponse = await MeteoAPI.fetchCoordsByCity(city)
+      setCoordinates({
+        lat: coordsResponse.latitude,
+        lng: coordsResponse.longitude
+      });
+    } catch (error) {
+      Alert.alert("Aouch !", error);
+    }
+  }
+
   async function getUserCoordinates() {
     const { status } = await requestForegroundPermissionsAsync();
     if (status === "granted") {
@@ -75,7 +87,13 @@ const App = () => {
                 screenOptions={{ headerShown: false, animation: "fade" }}
               >
                 <Stack.Screen name="Home">
-                  {() => <Home city={city} weather={weather} />}
+                  {() => (
+                    <Home
+                      city={city}
+                      weather={weather}
+                      onSubmitSearch={fetchCoordsByCity}
+                    />
+                  )}
                 </Stack.Screen>
                 <Stack.Screen name="Forecasts" component={Forecasts} />
               </Stack.Navigator>

@@ -1,12 +1,12 @@
 import React from "react";
 import { View } from "react-native";
-import { s } from "./Home.style";
 import MeteoBasic from "../../components/MeteoBasic/MeteoBasic";
-import { getWeatherInterpretation } from "../../utils/meteo_utils";
 import MeteoAdvanced from "../../components/MeteoAdvanced/MeteoAdvanced";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import { getWeatherInterpretation } from "../../utils/meteo_utils";
+import { s } from "./Home.style";
 
-const Home = ({ city, weather }) => {
+const Home = ({ city, weather, onSubmitSearch }) => {
   const currentWeather = weather.current_weather;
   const currentInterpretation = getWeatherInterpretation(currentWeather.weathercode);
   const sunrise = weather.daily.sunrise[0].split("T")[1].padStart(2, "0");
@@ -23,7 +23,7 @@ const Home = ({ city, weather }) => {
         />
       </View >
       <View style={s.searchbar_container}>
-        <SearchBar />
+        <SearchBar onSubmit={onSubmitSearch} />
       </View>
       <View style={s.meteo_advanced}>
         <MeteoAdvanced

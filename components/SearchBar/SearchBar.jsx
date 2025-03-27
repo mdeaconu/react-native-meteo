@@ -6,6 +6,7 @@ const SearchBar = ({ onSubmit }) => {
   return (
     <TextInput
       onSubmitEditing={(e) => onSubmit(e.nativeEvent.text)}
+      clearTextOnFocus={true}
       placeholder="Type a city..."
       style={s.input}
     />
