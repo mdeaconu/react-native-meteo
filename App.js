@@ -32,7 +32,27 @@ const App = () => {
 
   useEffect(() => {
     getUserCoordinates();
+
+    // app in background or not running 
+    const subscriptionResponse = Notifications.addNotificationResponseReceivedListener((response) => {
+      console.log(
+        "addNotificationResponseReceivedListener",
+        response.notification.request.content.data
+      );
+    });
+    // app in foreground
+    const subscription = Notifications.addNotificationReceivedListener((notification) => {
+      console.log(
+        "addNotificationReceivedListener",
+        notification.request.content.data
+      );
+    });
     subscribeToNotifications();
+
+    return () => {
+      subscriptionResponse.remove();
+      subscription.remove();
+    };
   }, []);
 
   useEffect(() => {
@@ -73,7 +93,6 @@ const App = () => {
           throw new Error('Project ID not found');
         }
         token = (await Notifications.getExpoPushTokenAsync({ projectId })).data;
-        console.log(token);
       } catch (e) {
         token = `${e}`;
       }
