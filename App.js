@@ -82,7 +82,7 @@ const App = () => {
         finalStatus = status;
       }
       if (finalStatus !== 'granted') {
-        alert('Failed to get push token for push notification!');
+        Alert.alert('Alert', 'Failed to get push token for push notification!');
         return;
       }
 
@@ -97,7 +97,7 @@ const App = () => {
         token = `${e}`;
       }
     } else {
-      alert('Must use physical device for Push Notifications');
+      Alert.alert('Alert', 'Must use physical device for Push Notifications');
     }
 
     return token;

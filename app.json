@@ -23,8 +23,11 @@
       },
       "permissions": [
         "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
         "android.permission.ACCESS_FINE_LOCATION"
-      ]
+      ],
+      "package": "com.md876649.reactnativemeteo"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -43,6 +46,12 @@
         "projectId": "110adb43-a000-435c-8daa-a31f25eafca7"
       }
     },
-    "owner": "md876649"
+    "owner": "md876649",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/110adb43-a000-435c-8daa-a31f25eafca7"
+    }
   }
 }
